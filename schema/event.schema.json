@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/delta-index/event.schema.json",
+  "title": "Delta Index event",
+  "description": "A public event in Shenzhen, Hong Kong, or Guangzhou.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "city",
+    "start",
+    "end",
+    "venue",
+    "description",
+    "source_url",
+    "last_verified"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^(sz|hk|gz)-[a-z0-9-]+$",
+      "description": "Stable lowercase ID beginning with the correct city prefix."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "city": {
+      "enum": [
+        "shenzhen",
+        "hong-kong",
+        "guangzhou"
+      ]
+    },
+    "start": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 date and time with a UTC offset, normally +08:00."
+    },
+    "end": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 date and time with a UTC offset, normally +08:00."
+    },
+    "venue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "address"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "address": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https?://",
+      "description": "Page that confirms the event details."
+    },
+    "last_verified": {
+      "type": "string",
+      "format": "date",
+      "description": "Date on which the source was last checked."
+    },
+    "organizer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "registration_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https?://"
+    },
+    "image_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https?://"
+    },
+    "price": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable price, such as Free, HKD 100, or CNY 50."
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "cancelled": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
+

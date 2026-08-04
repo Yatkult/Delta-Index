@@ -1,0 +1,53 @@
+name: Rebuild event feeds
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "data/**"
+      - "feeds/**"
+      - "scripts/**"
+      - "tests/**"
+      - ".github/workflows/rebuild-and-publish.yml"
+  schedule:
+    - cron: "17 1 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: delta-index-feeds
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repository files
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Test event validation
+        run: python -m unittest discover -s tests -v
+
+      - name: Rebuild public feeds
+        run: python scripts/build_feeds.py
+
+      - name: Save updated feeds to the repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add feeds/*.json
+          if git diff --cached --quiet; then
+            echo "Feeds are already current."
+          else
+            git commit -m "Update generated event feeds"
+            git push
+          fi
+

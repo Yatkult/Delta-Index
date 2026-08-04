@@ -1,0 +1,74 @@
+[
+  {
+    "id": "sz-2099-08-08-example-001",
+    "title": "[EXAMPLE] Shenzhen evening programme",
+    "city": "shenzhen",
+    "start": "2099-08-08T19:30:00+08:00",
+    "end": "2099-08-08T21:00:00+08:00",
+    "venue": {
+      "name": "Example venue",
+      "address": "Replace with the full Shenzhen address"
+    },
+    "description": "This is a format example, not a real event. Replace every example value before publishing.",
+    "source_url": "https://example.com/shenzhen-event",
+    "last_verified": "2099-08-01",
+    "organizer": "Example organizer",
+    "registration_url": "https://example.com/register",
+    "price": "Free",
+    "languages": [
+      "zh-CN",
+      "en"
+    ],
+    "tags": [
+      "art",
+      "talk"
+    ],
+    "cancelled": false
+  },
+  {
+    "id": "hk-2099-08-09-example-001",
+    "title": "[EXAMPLE] Hong Kong afternoon programme",
+    "city": "hong-kong",
+    "start": "2099-08-09T15:00:00+08:00",
+    "end": "2099-08-09T17:00:00+08:00",
+    "venue": {
+      "name": "Example venue",
+      "address": "Replace with the full Hong Kong address"
+    },
+    "description": "This is a format example, not a real event. Replace every example value before publishing.",
+    "source_url": "https://example.com/hong-kong-event",
+    "last_verified": "2099-08-01",
+    "price": "HKD 100",
+    "languages": [
+      "zh-HK",
+      "en"
+    ],
+    "tags": [
+      "film"
+    ],
+    "cancelled": false
+  },
+  {
+    "id": "gz-2099-08-10-example-001",
+    "title": "[EXAMPLE] Guangzhou morning programme",
+    "city": "guangzhou",
+    "start": "2099-08-10T10:00:00+08:00",
+    "end": "2099-08-10T12:00:00+08:00",
+    "venue": {
+      "name": "Example venue",
+      "address": "Replace with the full Guangzhou address"
+    },
+    "description": "This is a format example, not a real event. Replace every example value before publishing.",
+    "source_url": "https://example.com/guangzhou-event",
+    "last_verified": "2099-08-01",
+    "price": "CNY 50",
+    "languages": [
+      "zh-CN"
+    ],
+    "tags": [
+      "workshop"
+    ],
+    "cancelled": false
+  }
+]
+
